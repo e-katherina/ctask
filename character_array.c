@@ -1,0 +1,43 @@
+#include <stdio.h>
+#define MAXLINE 1000 /* максимальная длина строки */
+
+int getline_(char line[], int maxline);
+void copy(char to[], char from[]);
+
+/* напечатать строку максимальной длины */
+int main() {
+	int len; /* длина введенной строки  */
+	int max; /* максимальная длина строки на данный момент */
+	char line[MAXLINE]; /* введенная строка */
+	char longest[MAXLINE]; /* сохраняет самую длинную строку */
+	max = 0;
+	while ((len = getline_(line, MAXLINE)) > 0)
+		if (len > max) {
+			max = len;
+			copy(longest, line);
+		}
+	if (max > 0) /* there was a line */
+		printf("%s", longest);
+	return 0;
+}
+
+/* getline: записать строку в s, возвратить длину */
+int getline_(char s[], int lim) {
+	int c, i;
+	for (i = 0; i < lim-1 && (c = getchar()) != EOF && c != '\n'; ++i)
+		s[i] = c;
+	if (c == '\n') {
+		s[i] = c;
+		++i;
+	}
+	s[i] = '\0';
+	return i;
+}
+
+/* copy: copy 'from' into 'to'; assume to is big enough */
+void copy(char to[], char from[]) {
+	int i;
+	i = 0;
+	while ((to[i] = from[i]) != '\0')
+		++i;
+}
