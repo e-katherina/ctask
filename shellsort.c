@@ -4,9 +4,9 @@
 void shellsort1 (int v[], int n)
 { 	int gap, i, j, temp;
 	for (gap = n/2; gap > 0; gap /= 2) {
-		 printf ("\ngap = %d\n", gap);
+		// printf ("\ngap = %d\n", gap);
 		 for (i = gap; i < n; i++) {
-			 printf ("i = %d   ", i);
+			// printf ("i = %d   ", i);
 			 for (j = i - gap; j >= 0 && v[j] > v[j + gap]; j -= gap) {
 		 		temp = v[j];
 		 		v[j] = v[j + gap];
